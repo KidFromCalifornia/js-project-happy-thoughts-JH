@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense, lazy } from "react";
 import MessageList from "./components/MessageList";
 import MessageForm from "./components/MessageForm";
 import handleLike from "./components/HandlesLike";
-import LoadingSpinner from "./components/LoadingSpinner";
 import { Footer } from "./styles/Footer";
 import NavBar from "./components/NavBar";
+
+const LoadingSpinner = lazy(() => import("./components/LoadingSpinner"));
 
 export const App = () => {
   const [thoughts, setThoughts] = useState([]);
@@ -82,7 +83,9 @@ export const App = () => {
       </header>
       <main>
         {loading ? (
-          <LoadingSpinner /> // Show loading message while fetching
+          <Suspense fallback={<div>Loading spinner...</div>}>
+            <LoadingSpinner />
+          </Suspense>
         ) : (
           <>
             <MessageForm
