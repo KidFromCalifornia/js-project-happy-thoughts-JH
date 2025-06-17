@@ -111,7 +111,7 @@ export const App = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <p>Jonny Hicks </p>
+            Jonny Hicks
           </a>
         </div>
       </Footer>
